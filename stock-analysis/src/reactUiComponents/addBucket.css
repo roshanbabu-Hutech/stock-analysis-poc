@@ -1,0 +1,23 @@
+.ant-form-item .ant-form-item-label >label{
+    font-weight: 700;
+}
+
+.bucketList-card.ant-card .ant-card-head{
+    border-bottom: none;
+}
+
+.ant-form-item{
+    margin-bottom: 10px;
+}
+
+.create-stock-card.ant-card .ant-card-body{
+    padding: 24px 5rem;
+}
+
+.view-label{
+    color: #615C5C;
+    font-size: 13px;
+}
+.stock-value{
+    margin: 0;
+}
