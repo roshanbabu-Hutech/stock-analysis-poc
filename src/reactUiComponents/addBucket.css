@@ -21,3 +21,6 @@
 .stock-value{
     margin: 0;
 }
+.table_td{
+    cursor: pointer;
+}

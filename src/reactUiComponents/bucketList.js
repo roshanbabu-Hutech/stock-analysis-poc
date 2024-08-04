@@ -9,6 +9,8 @@ import { generateClient } from "aws-amplify/api";
 import { updateStockBucket,deleteStockBucket } from '../graphql/mutations';
 import { listStockBuckets, getStockBucket } from "../graphql/queries";
 import { createStockBucket } from "../graphql/mutations";
+import { useNavigate } from "react-router-dom";
+import "./addBucket.css"
 
 const { TextArea } = Input;
 
@@ -21,7 +23,7 @@ function BucketLists() {
   const [bucketList, setBucketList] = useState([]);
   const [getOneBucket, setGetOneBucket] = useState({});
   const [form] = Form.useForm();
-
+  const navigate = useNavigate();
   const getBucketList = async () => {
     const allStockBuckets = await client.graphql({
       query: listStockBuckets,
@@ -43,7 +45,7 @@ function BucketLists() {
   };
   // List all items
   useEffect(() => {
-    getBucketList();
+      getBucketList();
   }, []);
 
   const getBucketDataById = async (id) => {
@@ -61,35 +63,40 @@ function BucketLists() {
     });
   };
   const handleClick = () => {
+    form.resetFields();
     setopenStockModel(true);
   };
   const handleSave = async (value) => {
-    if (getOneBucket) {
-      const updatedStockBucket = await client.graphql({
+
+    const [oldbucket]  = bucketList.filter(ele => {
+        if((ele?.name?.replaceAll(' ', '').toLowerCase()) === (value?.name?.replaceAll(' ', '').toLowerCase())){
+          return true;
+        }
+    })
+
+    if (oldbucket) {
+      await client.graphql({
         query: updateStockBucket,
         variables: {
             input: {
-              id: getOneBucket?.id,
-        ...value
-      }
-      
+              id: oldbucket?.id,
+              ...value
+             }
         }
-    });
-    setopenStockModel(false)
-    getBucketList()
+      });
     }else{
-    const result = await client.graphql({
-      query: createStockBucket,
-      variables: {
-        input: {
-          ...value,
-          // "Stocks": /* Provide a Stocks instance here */
-        },
-      },
-    });
-    setopenStockModel(false);
-    getBucketList();
-  }
+        const result = await client.graphql({
+          query: createStockBucket,
+          variables: {
+            input: {
+              ...value,
+              // "Stocks": /* Provide a Stocks instance here */
+            },
+          },
+        });
+    }
+      await getBucketList();
+      setopenStockModel(false);
   };
 
   const handleDeleteBucket = async(id)=>{
@@ -121,29 +128,43 @@ function BucketLists() {
       },
     });
   };
+  const navigateToCreateStock = (id,name)=>{
+    navigate(`/stock-list/${id}/${name}`)
+  }
   const columns = [
     {
       dataIndex: "sl_no",
       key: "sl_no",
       title: "Sl No.",
+      fixed: 'left',
       width: 80,
+      render: (_, rec) => <div className="table_td" onClick={()=>navigateToCreateStock(rec?.id,rec?.name)}>
+        {rec?.sl_no}
+      </div>
     },
     {
       dataIndex: "name",
       key: "name",
       title: "Stock Name",
       width: 300,
+      render: (_, rec) => <div className="table_td" onClick={()=>navigateToCreateStock(rec?.id,rec?.name)}>
+      {rec?.name}
+    </div>
     },
     {
       dataIndex: "description",
       key: "description",
       title: "Description",
       width: 300,
+      render: (_, rec) => <div className="table_td" onClick={()=>navigateToCreateStock(rec?.id,rec?.name)}>
+      {rec?.description}
+    </div>
     },
     {
       dataIndex: "action",
       key: "action",
       title: "Action",
+      fixed: 'right',
       width: 100,
       render: (_, rec) => {
         return (
@@ -169,8 +190,9 @@ function BucketLists() {
         display: "flex",
         justifyContent: "center",
         background: "#EDF2F6",
-        paddingTop: "5rem",
+        padding: "1rem",
       }}>
+        
       <Card
         title="Bucket List"
         style={{ width: "900px", height: "600px" }}
@@ -184,8 +206,8 @@ function BucketLists() {
           columns={columns}
           dataSource={bucketList}
           pagination={false}
-          scroll={{ y: 430 }}
-        />
+          // scroll={{ x: '100vw' }}
+          />
       </Card>
       <Modal
         open={openStockModel}

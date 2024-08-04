@@ -27,6 +27,19 @@
 .App-link {
   color: #61dafb;
 }
+.full_screen_load{
+  background-color: #cdcdcd;
+  position: fixed;
+  display: flex;
+  opacity: .3;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
 
 @keyframes App-logo-spin {
   from {

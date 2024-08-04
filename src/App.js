@@ -60,10 +60,11 @@ console.log(bucketList,"list");
         <Content>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={bucketList?.length>0 ? <BucketLists/>:<AddBucketButton />} />
+              {/* <Route path="/" element={bucketList?.length>0 ? <BucketLists/>:<AddBucketButton />} /> */}
+              <Route path="/" element={<BucketLists/>} />
               <Route path="/bucket-list" element={<BucketLists />} />
-              <Route path="/create-stock" element={<CreateStock />} />
-              <Route path="/stock-list" element={<StockList />} />
+              <Route path="/create-stock/:id/:name/" element={<CreateStock />} />
+              <Route path="/stock-list/:id/:name/" element={<StockList />} />
             </Routes>
           </BrowserRouter>
         </Content>
