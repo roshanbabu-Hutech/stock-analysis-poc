@@ -10,6 +10,51 @@
       "StackName": "amplify-testapp-staging-56e28",
       "StackId": "arn:aws:cloudformation:us-east-1:680358286401:stack/amplify-testapp-staging-56e28/0f0a8120-4e33-11ef-930a-0e64ea499a17",
       "AmplifyAppId": "d88gn0kxmdwit"
+    },
+    "categories": {
+      "auth": {
+        "testapp": {
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::680358286401:role/amplify-testapp-dev-f7c49-authRole",
+          "authRoleName": "amplify-testapp-dev-f7c49-authRole",
+          "identityPoolId": "us-east-1:88022867-555c-44d2-9fb7-bbf908dadfd3",
+          "identityPoolName": "testAuthIdentityPool__dev",
+          "nativeClientId": "6s26ga7anqj38fosu925dm7nap",
+          "unauthRoleArn": "arn:aws:iam::680358286401:role/amplify-testapp-dev-f7c49-unauthRole",
+          "unauthRoleName": "amplify-testapp-dev-f7c49-unauthRole",
+          "userPoolId": "us-east-1_nXD2hMNu8",
+          "userPoolName": "TestApp-dev",
+          "webClientId": "6s26ga7anqj38fosu925dm7nap"
+        }
+      }
+    }
+  },
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-testapp-dev-f7c49-authRole",
+      "UnauthRoleArn": "arn:aws:iam::680358286401:role/amplify-testapp-dev-f7c49-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::680358286401:role/amplify-testapp-dev-f7c49-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-testapp-dev-f7c49-deployment",
+      "UnauthRoleName": "amplify-testapp-dev-f7c49-unauthRole",
+      "StackName": "amplify-testapp-dev-f7c49",
+      "StackId": "arn:aws:cloudformation:us-east-1:680358286401:stack/amplify-testapp-dev-f7c49/b62d0d20-52ec-11ef-94ce-0e999d3095ab",
+      "AmplifyAppId": "d88gn0kxmdwit"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d88gn0kxmdwit",
+          "type": "manual"
+        }
+      },
+      "api": {
+        "TestApp": {}
+      },
+      "auth": {
+        "testappc6fd572c": {},
+        "TestApp": {}
+      }
     }
   }
 }

@@ -145,7 +145,7 @@ function BucketLists() {
     {
       dataIndex: "name",
       key: "name",
-      title: "Stock Name",
+      title: "Stock Bucket Name",
       width: 300,
       render: (_, rec) => <div className="table_td" onClick={()=>navigateToCreateStock(rec?.id,rec?.name)}>
       {rec?.name}

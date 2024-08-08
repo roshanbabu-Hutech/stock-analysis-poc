@@ -1,0 +1,35 @@
+.sign-out-button {
+    background-color: #ff4d4f; /* Bright red color for emphasis */
+    color: white;
+    border: none;
+    border-radius: 6px; /* Slightly smaller rounded corners */
+    padding: 6px 12px;/* Reduced padding for smaller button size */
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size for a compact look */
+    font-weight: 600; /* Slightly bolder text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease;
+    text-align: center; /* Center the text horizontally */
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally within flex container */
+    min-width: 80px; /* Minimum width to maintain button appearance */
+    min-height: 0px;
+    max-height: 45px;
+    margin-top: 8px;
+  }
+  
+  .sign-out-button:hover {
+    background-color: #e63946; /* Darker shade of red for hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  }
+  
+  .sign-out-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.5); /* Outline for accessibility */
+  }
+  
+  .sign-out-button:active {
+    background-color: #d62839; /* Even darker shade for active state */
+  }
+  

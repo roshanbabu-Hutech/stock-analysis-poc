@@ -4,10 +4,11 @@ import { schema } from './schema';
 
 
 
-const { Stocks, StockBucket, User } = initSchema(schema);
+const { StockBucketStockUniverse, StockUniverse, StockBucket, User } = initSchema(schema);
 
 export {
-  Stocks,
+  StockBucketStockUniverse,
+  StockUniverse,
   StockBucket,
   User
 };

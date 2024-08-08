@@ -12,8 +12,8 @@ import {
 import React, { useEffect, useState } from "react";
 import "./addBucket.css";
 import { generateClient } from "aws-amplify/api";
-import { listStocks } from "../graphql/queries";
-import { deleteStocks } from "../graphql/mutations";
+import { listStockUniverses  } from "../graphql/queries";
+import { deleteStockUniverse } from "../graphql/mutations";
 import { useNavigate, useParams } from "react-router-dom";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 
@@ -37,11 +37,11 @@ function StockList() {
           },
         };
         const allStocks = await client.graphql({
-          query: listStocks,
+          query: listStockUniverses,
           variables,
         });
         setLoader(false);
-        setStockList(allStocks?.data?.listStocks?.items || []);
+        setStockList(allStocks?.data?.listStockUniverses?.items || []);
       } catch (err) {
         message.error("Something went wrong on Fetching StockList");
         setLoader(false);
@@ -58,7 +58,7 @@ function StockList() {
     const handleDeleteBucket = async () => {
       try {
         await client.graphql({
-          query: deleteStocks,
+          query: deleteStockUniverse,
           variables: {
             input: {
               id: stockId,

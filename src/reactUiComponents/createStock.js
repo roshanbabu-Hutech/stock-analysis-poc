@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Card, Input, Form, Button, Space, Divider, message } from "antd";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { generateClient } from "aws-amplify/api";
-import { updateStocks } from "../graphql/mutations";
-import { createStocks } from "../graphql/mutations";
+import { updateStockUniverse } from "../graphql/mutations";
+import { createStockUniverse } from "../graphql/mutations";
 import "./addBucket.css";
 
 function CreateStock() {
@@ -39,7 +39,7 @@ function CreateStock() {
   const createStockHandler = async () => {
     try {
       const newStocks = await client.graphql({
-        query: createStocks,
+        query: createStockUniverse,
         variables: {
           input: {
             company,
@@ -65,7 +65,7 @@ function CreateStock() {
 
   const updateStockHandler = async () => {
     const updatedStocks = await client.graphql({
-      query: updateStocks,
+      query: updateStockUniverse,
       variables: {
         input: { ...formData, stock_bucket_id: id },
       },
